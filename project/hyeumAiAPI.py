@@ -54,8 +54,7 @@ def getGPTAPI(user_content, order, alignment="", polite="", cnt=0):
         # 내용을 듣고 다음 질문 생성하기
         elif order == 2: # GPT 질문 문구 생성
             client = openai.OpenAI(api_key='')
-            # order 2에선 alignment에 존댓말, 반말 정보가 들어가도록
-            contents = user_content + "\n Q는 질문이고 A는 답변이야 내용을 읽어 보고 꼭 Q. 형식으로 출력해줘 " + f"단, 조건이 있어 \n 1. 지금부터 질문만 해야해. 유저가 다음에 말하기 편하도록 마지막에 대한 대화를 이어가줘 \n 2. '그럼요, 그럼' 같은 내가 시키는거에 대답하는 단어는 쓰면 안돼 \n 3. 자문자답 또한 금지야 \n 4. 말은 항상 {polite}로 할 것 \n 5. 질문은 평문이고, 질문 외에 다른 말은 붙이지 말 것 \n 6. 글자수는 반환 값의 글자수는 20글자로 제한할게 7. 비슷한 말 또 하지 말 것."
+            contents = user_content + "\n Q는 질문이고 A는 답변이야 내용을 읽어 보고 꼭 Q. 형식으로 출력해줘 " + f"단, 조건이 있어 \n 1. 지금부터 질문만 해야해. 유저가 다음에 말하기 편하도록 마지막에 대한 대화를 이어가줘 \n 2. '그럼요, 그럼' 같은 내가 시키는거에 대답하는 단어는 쓰면 안돼 \n 3. 자문자답 또한 금지야 \n 4. 말은 항상 {polite}로 할 것 \n 5. 질문은 평문이고, 질문 외에 다른 말은 붙이지 말 것 \n 6. 글자수는 반환 값의 글자수는 20글자로 제한할게\n 7. 똑같거나 비슷한 말 또 절대 하지 말 것."
             chat_completion = client.chat.completions.create(
                 model=GPT_MODEL,
                 messages=[
